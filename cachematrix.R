@@ -14,5 +14,4 @@ cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 }
 
-print("Laura is great")
 print("Laura is hot")
