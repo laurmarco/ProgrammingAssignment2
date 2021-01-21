@@ -1,10 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This pair of functions provides an efficient way to calculate the inverse of a matrix by 
+## leveraging lexical scoping and the cache of a function environment.
 
-## First, the function objects x and z are initialized where x is a matrix and z is the inverse of that matrix. 
-## Then, it returns four functions: set() to mutate the values in the objects in the parent environment,
-## get() to define the getter for matrix x. setinverse() defines the setter for the inverse of the matrix
-## that we store as z, and getinverse() that defines the getter for the inverse.
+## makeCacheMatrix
+## First, the function objects x and z are initialized where x is a matrix and z is a variable to store the inverse of that matrix. 
+## Then, it returns four functions: set() to mutate the values of x and z in the parent environment,
+## get() to fetch the matrix x. setinverse() to assign the inverse of the matrix to z,
+## and getinverse() to fetch the inverse z.
 ## Next, it creates and returns a list with named elements that are the four functions we defined.
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -22,12 +23,14 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-## Write a short comment describing this function
-## 
 
-## Return a matrix that is the inverse of 'x'
+## cacheSolve
+## Step one, use the getinverse() function to get the stored inverse from the input.
+## Step two, check if the stored inverse is non-NULL. If it is, return it directly. 
+## Step three, use the get() function to return the matrix and use solve() to get the inverse.
+## Step four, set the new inverse and return it.
+
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
         z <- x$getinverse()
         if(!is.null(z)) {
                 message("getting cached data")
